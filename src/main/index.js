@@ -21,51 +21,42 @@ function MainPage() {
 
   return (
     <div>
-      <div id="header">
-        <div id="header-area">
-          <img src="images/icons/logo.png" alt="" />
-        </div>
+      <div id="banner">
+        <img src="images/banners/banner1.png" alt="" />
       </div>
 
-      <div id="body">
-        <div id="banner">
-          <img src="images/banners/banner1.png" alt="" />
-        </div>
+      <h1>판매되는 상품들</h1>
 
-        <h1>판매되는 상품들</h1>
-
-        <div id="product-list">
-          {/*           //jsx문법사용임 */}
-          {products.map(function (product, index) {
-            return (
-              <div className="product-card">
-                <Link className="product-link" to={`/products/${index}`}>
-                  <div>
+      <div id="product-list">
+        {/*           //jsx문법사용임 */}
+        {products.map(function (product, index) {
+          return (
+            <div className="product-card">
+              <Link
+                style={{ color: "inherit" }}
+                className="product-link"
+                to={`/products/${product.id}`}
+              >
+                <div>
+                  <img className="product-img" src={product.imageUrl} alt="" />
+                </div>
+                <div className="product-contents">
+                  <span className="product-name">{product.name}</span>
+                  <span className="product-price">{product.price}원</span>
+                  <div className="product-seller">
                     <img
-                      className="product-img"
-                      src={product.imageUrl}
+                      src="images/icons/avatar.png"
                       alt=""
+                      className="product-avatar"
                     />
+                    <span>{product.seller}</span>
                   </div>
-                  <div className="product-contents">
-                    <span className="product-name">{product.name}</span>
-                    <span className="product-price">{product.price}원</span>
-                    <div className="product-seller">
-                      <img
-                        src="images/icons/avatar.png"
-                        alt=""
-                        className="product-avatar"
-                      />
-                      <span>{product.seller}</span>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
+                </div>
+              </Link>
+            </div>
+          );
+        })}
       </div>
-      <div id="footer"></div>
     </div>
   );
 }
