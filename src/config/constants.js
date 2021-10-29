@@ -1,1 +1,4 @@
-export const API_URL = "https://grab-market-client-seven.vercel.app/";
+export const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://grab-market-server-sm.herokuapp.com"
+    : "http://localhost:8080";
